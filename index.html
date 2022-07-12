@@ -75,9 +75,16 @@ function checkGuess() {
     lastResult.textContent = 'Wrong!';
     lastResult.style.backgroundColor = 'red';
     if(userGuess < randomNumber) {
-      lowOrHi.textContent = 'Last guess was too low!';
+      lowOrHi.textContent = 'Last guess was lower!';
     } else if(userGuess > randomNumber) {
-      lowOrHi.textContent = 'Last guess was too high!';
+      lowOrHi.textContent = 'Last guess was higher!';
+    }
+    if(userGuess < 1){
+      lowOrHi.textContent = 'Please enter a number in between 1 - 100';
+    }
+    if(userGuess > 100){
+      lowOrHi.textContent = 'Please enter a number in between 1 - 100';
+    }
     }
   }
   
@@ -85,7 +92,7 @@ function checkGuess() {
   guessCount++;
   guessField.value = '';
   guessField.focus();
-}
+
 guessSubmit.addEventListener('click', checkGuess);
 function setGameOver() {
   guessField.disabled = true;
