@@ -81,9 +81,11 @@ function checkGuess() {
     }
     if(userGuess < 1){
       lowOrHi.textContent = 'Please enter a number in between 1 - 100';
+      guessCount++;
     }
     if(userGuess > 100){
       lowOrHi.textContent = 'Please enter a number in between 1 - 100';
+      guessCount++;
     }
     }
   }
