@@ -47,16 +47,17 @@
     let randomNumber = Math.floor(Math.random() * 100) + 1;
 
     const guesses = document.querySelector('.guesses');
-    const lastResult = document.querySelector('.lastResult');      
+    const lastResult = document.querySelector('.lastResult');
     const lowOrHi = document.querySelector('.lowOrHi');
+
     const guessSubmit = document.querySelector('.guessSubmit');
     const guessField = document.querySelector('.guessField');
 
     let guessCount = 1;
     let resetButton;
     guessField.focus();
-
-function checkGuess() {
+    
+    function checkGuess() {
   const userGuess = Number(guessField.value);
   if (guessCount === 1) {
     guesses.textContent = 'Previous guesses: ';
@@ -76,25 +77,16 @@ function checkGuess() {
     lastResult.textContent = 'Wrong!';
     lastResult.style.backgroundColor = 'red';
     if(userGuess < randomNumber) {
-      lowOrHi.textContent = 'Last guess was lower!';
+      lowOrHi.textContent = 'Last guess was low!';
     } else if(userGuess > randomNumber) {
-      lowOrHi.textContent = 'Last guess was higher!';
-    }
-    if(userGuess < 1){
-      lowOrHi.textContent = 'Please enter a number in between 1 - 100';
-      guessCount++;
-    }
-    if(userGuess > 100){
-      lowOrHi.textContent = 'Please enter a number in between 1 - 100';
-      guessCount++;
-    }
+      lowOrHi.textContent = 'Last guess was high!';
     }
   }
-  
 
   guessCount++;
   guessField.value = '';
   guessField.focus();
+}
 
 guessSubmit.addEventListener('click', checkGuess);
 function setGameOver() {
